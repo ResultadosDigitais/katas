@@ -12,4 +12,13 @@ RSpec.describe SupportRotation do
       expect(support_rotation).to be_instance_of(SupportRotation)
     end
   end
+
+  describe "Insert duration of the operation in weeks" do
+    it "register number of weeks" do
+      teams_and_members = []
+      weeks = 0
+      support_rotation = SupportRotation.new(teams_and_members, weeks)
+      expect(support_rotation).to be_instance_of(SupportRotation)
+    end
+  end
 end
