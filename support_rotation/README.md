@@ -25,15 +25,15 @@ Comece pela primeira user-story e escreva pelo menos um teste para cada requisit
 ## User stories
 
 1. Eu preciso cadastrar no sistema a lista de times e seus membros.
-1. Eu preciso cadastrar no sistema o número de semanas que a escala da operação vai durar.
-2. Eu preciso visualizar uma lista contendo os times e as pessoas alocadas em cada semana da operação. As pessoas são alocadas semanalmente.
-3. Se não houverem pessoas para revezamento na escala da operação, a pessoa do time deve permanecer na escala em todas as semanas.
-4. Cada pessoa de um time não pode estar na escala da operação por 2 ou mais semanas consecutivas, caso existam membros para revezamento no time.
-5. As pessoas dos times precisam ser distribuídas entre as semanas da operação de maneira igualitária, sempre que possível.
-6. Caso o número de membros de um time seja inferior ao número de semanas, a escala deve seguir reiniciando pela pessoa que foi alocada na primeira semana e seguir a mesma ordem do primeiro ciclo da escala.
-7. A lista de escalas deve ser ordenada pelo nome dos times, assim consigo localizar um time mais facilmente e visualizar sua escala
-8. Os nomes dos times devem aparecer capitalizados, para que eu consiga fazer a leitura de maneira mais fácil.
-9. Os nomes das pessoas devem aparecer capitalizados, para que eu consiga fazer a leitura de maneira mais fácil.
+2. Eu preciso cadastrar no sistema o número de semanas que a escala da operação vai durar.
+3. Eu preciso visualizar uma lista contendo os times e as pessoas alocadas em cada semana da operação. As pessoas são alocadas semanalmente.
+4. Se não houverem pessoas para revezamento na escala da operação, a pessoa do time deve permanecer na escala em todas as semanas.
+5. Cada pessoa de um time não pode estar na escala da operação por 2 ou mais semanas consecutivas, caso existam membros para revezamento no time.
+6. As pessoas dos times precisam ser distribuídas entre as semanas da operação de maneira igualitária, sempre que possível.
+7. Caso o número de membros de um time seja inferior ao número de semanas, a escala deve seguir reiniciando pela pessoa que foi alocada na primeira semana e seguir a mesma ordem do primeiro ciclo da escala.
+8. A lista de escalas deve ser ordenada pelo nome dos times, assim consigo localizar um time mais facilmente e visualizar sua escala
+9. Os nomes dos times devem aparecer capitalizados, para que eu consiga fazer a leitura de maneira mais fácil.
+10. Os nomes das pessoas devem aparecer capitalizados, para que eu consiga fazer a leitura de maneira mais fácil.
 
 ## Amostra de dados
 
