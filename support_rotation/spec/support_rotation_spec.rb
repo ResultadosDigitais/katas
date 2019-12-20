@@ -21,4 +21,20 @@ RSpec.describe SupportRotation do
       expect(support_rotation).to be_instance_of(SupportRotation)
     end
   end
+
+  describe "Show teams and members lists" do
+    it "returns teams and members lists" do
+      teams_and_members = [
+        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
+        {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
+      ]
+
+      support_rotation = SupportRotation.new(teams_and_members)
+
+      expect(support_rotation.show).to eq(teams_and_members)
+    end
+  end
+
+  
+
 end

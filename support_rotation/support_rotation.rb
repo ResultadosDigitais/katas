@@ -3,4 +3,9 @@ class SupportRotation
     @teams_and_members = teams_and_members
     @weeks = weeks
   end
+
+  def show
+    @teams_and_members
+  end
+
 end
