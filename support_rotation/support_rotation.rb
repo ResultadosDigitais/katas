@@ -9,8 +9,14 @@ class SupportRotation
   end
 
   def show_schedule
-    schedule = []
-    week = 1 
-    schedule = [week, @teams_and_members]
+    schedule = {1 => @teams_and_members}
+
+    schedule.each do |week, team_and_members|
+      team_and_members.each do |team|
+        team.each do |members|
+          puts "#{schedule}"
+        end
+      end
+    end
   end
 end
