@@ -8,4 +8,9 @@ class SupportRotation
     @teams_and_members
   end
 
+  def show_schedule
+    schedule = []
+    week = 1 
+    schedule = [week, @teams_and_members]
+  end
 end

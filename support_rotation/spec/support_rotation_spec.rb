@@ -35,6 +35,21 @@ RSpec.describe SupportRotation do
     end
   end
 
-  
+   describe "Show schedule of teams and members per week" do
+    it "returns team and members schedule" do
+      teams_and_members = [
+        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
+        {team: 'cdp', members: ['yuri', 'rogerio', 'gdfg']}
+      ]
+      weeks = 2
+
+      support_rotation = SupportRotation.new(teams_and_members, weeks)
+
+      expect(support_rotation.show_schedule).to eq(
+        [1, teams_and_members]
+      )
+    end
+  end
 
 end
+
