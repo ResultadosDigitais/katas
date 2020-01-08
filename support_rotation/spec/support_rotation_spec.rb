@@ -45,7 +45,7 @@ RSpec.describe SupportRotation do
 
       expect(support_rotation.show_schedule).to eq(
         {
-          email: { '1'=> 'yuri', '2'=> 'gabriel'},
+          email: { '1'=> 'yuri', '2'=> 'rogerio'},
           cdp: {'1'=> 'jean g', '2'=> 'jean m' }
         }
       )

@@ -13,7 +13,7 @@ class SupportRotation
   # ]
 
   # {
-  #   email: { '1'=> 'yuri', '2'=> 'gabriel'},
+  #   email: { '1'=> 'yuri', '2'=> 'rogerio'},
   #   cpd: {'1'=> 'jean g', '2'=> 'jean m' }
   # }
 
@@ -23,11 +23,19 @@ class SupportRotation
       require 'pry'
       binding.pry
       schedule[@teams_and_members[i-1][:team].to_sym] = {
-        "#{i}" => @teams_and_members[i-1][:members][i-1], "#{i+1}" => @teams_and_members[i][:members][i]
+        "#{i}" => @teams_and_members[i-1][:members][i-1], 
+        "#{i+1}" => @teams_and_members[i-1][:members][i]
       }
-      i=i-1
       binding.pry
     end
     schedule
   end
 end
+
+# schedule {
+#   time [0] => { week 1 => membro[0] , week 2 => membro[1]} ,
+#   time [1] => { week 1 => membro[0] , week 2 => membro[1]}
+# }
+
+#  time [0] => { week 1 => membro[0], week 2 =>membro [1]}
+                  
