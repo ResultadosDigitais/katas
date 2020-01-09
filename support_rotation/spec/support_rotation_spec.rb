@@ -52,6 +52,23 @@ RSpec.describe SupportRotation do
     end
   end
 
+  describe "Repeat member if #members < #weeks" do
+    it "return same member every week" do
+      teams_and_members = [
+        {team: 'email', members: ['yuri']},
+        {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
+      ]
+      support_rotation = SupportRotation.new(teams_and_members, 2)
+
+      expect(support_rotation.show_schedule).to eq(
+        {
+          email: { '1'=> 'yuri', '2'=> 'yuri'},
+          cdp: {'1'=> 'jean g', '2'=> 'jean m' }
+        }
+      )
+    end
+  end
+
 
 end
 
