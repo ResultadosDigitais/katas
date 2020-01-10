@@ -34,7 +34,7 @@ Comece pela primeira user-story e escreva pelo menos um teste para cada requisit
 8. Caso o número de membros de um time seja inferior ao número de semanas, a escala deve seguir reiniciando pela pessoa que foi alocada na primeira semana e seguir a mesma ordem do primeiro ciclo da escala.
 9. A lista de escalas deve ser ordenada pelo nome dos times, assim consigo localizar um time mais facilmente e visualizar sua escala
 10. Os nomes dos times devem aparecer capitalizados, para que eu consiga fazer a leitura de maneira mais fácil.
-11. Os nomes das pessoas devem aparecer capitalizados, para que eu consiga fazer a leitura de maneira mais fácil.
+<!-- 11. Os nomes das pessoas devem aparecer capitalizados, para que eu consiga fazer a leitura de maneira mais fácil. -->
 
 ## Amostra de dados
 

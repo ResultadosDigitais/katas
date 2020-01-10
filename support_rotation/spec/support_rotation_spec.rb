@@ -45,14 +45,14 @@ RSpec.describe SupportRotation do
 
       expect(support_rotation.show_schedule).to eq(
         {
-          email: { '1'=> 'yuri', '2'=> 'rogerio'},
-          cdp: {'1'=> 'jean g', '2'=> 'jean m' }
+          Email: { '1'=> 'Yuri', '2'=> 'Rogerio'},
+          Cdp: {'1'=> 'Jean G', '2'=> 'Jean M'}
         }
       )
     end
   end
 
-  describe "Repeat member if #members < #weeks" do
+  describe "Repeat member if #members==1 < #weeks" do
     it "return same member every week" do
       teams_and_members = [
         {team: 'email', members: ['yuri']},
@@ -62,13 +62,62 @@ RSpec.describe SupportRotation do
 
       expect(support_rotation.show_schedule).to eq(
         {
-          email: { '1'=> 'yuri', '2'=> 'yuri'},
-          cdp: {'1'=> 'jean g', '2'=> 'jean m' }
+          Email: { '1'=> 'Yuri', '2'=> 'Yuri'},
+          Cdp: {'1'=> 'Jean G', '2'=> 'Jean M' }
         }
       )
     end
   end
 
+  describe "Repeat member sequence if #members smaller than  #weeks" do
+    it "return same member sequence"  do
+      teams_and_members = [
+        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
+        {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
+      ]
+      support_rotation = SupportRotation.new(teams_and_members, 5)
 
+      expect(support_rotation.show_schedule).to eq(
+        {
+          Email: { '1'=> 'Yuri', '2'=> 'Rogerio', '3'=> 'Gabriel', '4'=> 'Yuri', '5'=> 'Rogerio'},
+          Cdp: {'1'=> 'Jean G', '2'=> 'Jean M', '3'=> 'Vinicius', '4'=> 'Jean G', '5'=> 'Jean M'}
+        }
+      )
+    end
+  end
+
+  describe "Capitalize teams" do
+    it "Returns capitalized teams'names" do
+        teams_and_members = [
+          {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
+          {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
+        ]
+      support_rotation = SupportRotation.new(teams_and_members, 2)
+
+      expect(support_rotation.show_schedule).to eq(
+        {
+          Email: { '1'=> 'Yuri', '2'=> 'Rogerio'},
+          Cdp: {'1'=> 'Jean G', '2'=> 'Jean M' }
+        }
+      )
+    end
+  end
+
+  describe "Capitalize names" do
+    it "Returns capitalized members' names" do
+      teams_and_members = [
+        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
+        {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
+      ]
+      support_rotation = SupportRotation.new(teams_and_members, 2)
+
+      expect(support_rotation.show_schedule).to eq(
+        {
+          Email: { '1'=> 'Yuri', '2'=> 'Rogerio'},
+          Cdp: {'1'=> 'Jean G', '2'=> 'Jean M' }
+        }
+      )
+    end
+  end
 end
 
