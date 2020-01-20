@@ -35,6 +35,37 @@ RSpec.describe SupportRotation do
     end
   end
 
+  describe "Add member to schedule" do
+    it "Adds first member to each team's schedule" do
+      teams_and_members = [
+        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
+        {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
+      ]
+      support_rotation = SupportRotation.new(teams_and_members, 2)
+  
+      expect(support_rotation.add_first_member_to_each_team).to eq(
+        {
+          email: { '1'=> 'yuri'},
+          cdp: {'1'=> 'jean g'}
+        }
+      )
+    end
+
+    it "Adds member to schedule" do
+      teams_and_members = [
+        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']}
+      ]
+      support_rotation = SupportRotation.new(teams_and_members, 2)
+      support_rotation.add_first_member_to_each_team 
+
+      expect(support_rotation.add_member_to_schedule(0,1,2)).to eq(
+        {
+          email: { '1'=> 'yuri', '2'=>'rogerio'},
+        }
+      )
+    end
+  end
+
   describe "Show schedule of teams and members per week" do
     it "returns team and members schedule" do
       teams_and_members = [
@@ -52,18 +83,35 @@ RSpec.describe SupportRotation do
     end
   end
 
-  describe "Repeat member if #members==1 < #weeks" do
+  describe "Repeat member if #members==1 < #weeks" do ##2
     it "return same member every week" do
       teams_and_members = [
         {team: 'email', members: ['yuri']},
+        {team: 'cdp', members: ['jean g']}
+      ]
+      support_rotation = SupportRotation.new(teams_and_members, 2)
+
+      expect(support_rotation.build_schedule).to eq(
+        {
+          email: { '1'=> 'yuri', '2'=> 'yuri'},
+          cdp: {'1'=> 'jean g', '2'=> 'jean g'}
+        }
+      )
+    end
+  end
+
+  describe "Repeat member sequence if #members is bigger than #weeks" do
+    it "return same member sequence"  do
+      teams_and_members = [
+        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
         {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
       ]
       support_rotation = SupportRotation.new(teams_and_members, 2)
 
-      expect(support_rotation.show_schedule).to eq(
+      expect(support_rotation.build_schedule).to eq(
         {
-          Email: { '1'=> 'Yuri', '2'=> 'Yuri'},
-          Cdp: {'1'=> 'Jean G', '2'=> 'Jean M' }
+          email: { '1'=> 'yuri', '2'=> 'rogerio'},
+          cdp: {'1'=> 'jean g', '2'=> 'jean m'}
         }
       )
     end
@@ -115,9 +163,13 @@ RSpec.describe SupportRotation do
         {
           Email: { '1'=> 'Yuri', '2'=> 'Rogerio'},
           Cdp: {'1'=> 'Jean G', '2'=> 'Jean M' }
-        }
-      )
+        })
     end
   end
+
+
+
+
+
 end
 
