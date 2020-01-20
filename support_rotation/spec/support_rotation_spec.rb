@@ -2,7 +2,7 @@ require './support_rotation'
 
 RSpec.describe SupportRotation do
   describe "Register new Team and members" do
-    it "register multiple teams and members" do
+    it "registers multiple teams and members" do
       support_rotation =  SupportRotation.new(
         [
           { team: 'pope', members: ['bretan', 'robert', 'raites'] },
@@ -14,7 +14,7 @@ RSpec.describe SupportRotation do
   end
 
   describe "Insert duration of the operation in weeks" do
-    it "register number of weeks" do
+    it "registers number of weeks" do
       teams_and_members = []
       weeks = 0
       support_rotation = SupportRotation.new(teams_and_members, weeks)
@@ -66,25 +66,8 @@ RSpec.describe SupportRotation do
     end
   end
 
-  describe "Show schedule of teams and members per week" do
-    it "returns team and members schedule" do
-      teams_and_members = [
-        {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
-        {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
-      ]
-      support_rotation = SupportRotation.new(teams_and_members, 2)
-
-      expect(support_rotation.show_schedule).to eq(
-        {
-          Email: { '1'=> 'Yuri', '2'=> 'Rogerio'},
-          Cdp: {'1'=> 'Jean G', '2'=> 'Jean M'}
-        }
-      )
-    end
-  end
-
-  describe "Repeat member if #members==1 < #weeks" do ##2
-    it "return same member every week" do
+  describe "Build schedule repeating member if #members==1" do #repete o mesmo membro para todas as semanas
+    it "returns same member every week" do
       teams_and_members = [
         {team: 'email', members: ['yuri']},
         {team: 'cdp', members: ['jean g']}
@@ -100,8 +83,8 @@ RSpec.describe SupportRotation do
     end
   end
 
-  describe "Repeat member sequence if #members is bigger than #weeks" do
-    it "return same member sequence"  do
+  describe "Build schedule if #members is bigger than #weeks" do #parar a sequencia quando atinge numero de semanas
+    it "returns same member sequence"  do
       teams_and_members = [
         {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
         {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
@@ -117,8 +100,8 @@ RSpec.describe SupportRotation do
     end
   end
 
-  describe "Repeat member sequence if #members smaller than  #weeks" do
-    it "return same member sequence"  do
+  describe "Build schedule repeating member sequence if #members smaller than #weeks" do 
+    it "returns same member sequence"  do
       teams_and_members = [
         {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
         {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
@@ -167,9 +150,22 @@ RSpec.describe SupportRotation do
     end
   end
 
+  # describe "Show schedule of teams and members per week" do
+  #   it "returns team and members schedule" do
+  #     teams_and_members = [
+  #       {team: 'email', members: ['yuri', 'rogerio', 'gabriel']},
+  #       {team: 'cdp', members: ['jean g', 'jean m', 'vinicius']}
+  #     ]
+  #     support_rotation = SupportRotation.new(teams_and_members, 2)
 
-
-
+  #     expect(support_rotation.show_schedule).to eq(
+  #       {
+  #         Email: { '1'=> 'Yuri', '2'=> 'Rogerio'},
+  #         Cdp: {'1'=> 'Jean G', '2'=> 'Jean M'}
+  #       }
+  #     )
+  #   end
+  # end
 
 end
 

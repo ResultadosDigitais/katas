@@ -54,14 +54,16 @@ class SupportRotation
         (2..@weeks).each do |week_number|
           add_member_to_schedule(team_position, 0, week_number)
         end
+
+        
       #Se tem mais de um membro & mais semanas que membros
       # elsif (count_members[team_position] < @weeks) 
 
       #Se tem mais de um membro & mais membros que semanas
       else    
         (2..@weeks).each do |week_number|
-          (1..(count_members[team_position] - 1)).each do |member_position|       
-             add_member_to_schedule((week_number-1),(week_number-1), week_number)
+          (1..count_members[team_position]).each do |member_position|       
+             add_member_to_schedule(team_position, member_position, week_number)
            end    
         end
       end
